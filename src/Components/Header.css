@@ -1,0 +1,149 @@
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Container */
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo img {
+  height: 82px;
+}
+
+/* Desktop Nav */
+.nav-desktop {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-desktop a,
+.dropdown span {
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.nav-desktop a:hover,
+.dropdown span:hover {
+  color: #00c2cb;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  padding: 8px 0;
+  display: none;
+  min-width: 160px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  color: #1e293b;
+}
+
+.dropdown-menu a:hover {
+  background: #f5f7fa;
+}
+
+/* Right Section */
+.right-section {
+  display: flex;
+  gap: 12px;
+}
+
+/* Buttons */
+.saved-btn {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: linear-gradient(90deg, #00c2cb, #ff4f8b);
+  border: none;
+  color: white;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Mobile */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.mobile-menu.show {
+  right: 0;
+}
+
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-dropdown {
+  padding-left: 10px;
+}
+
+.mobile-buttons {
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}

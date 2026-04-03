@@ -1,0 +1,341 @@
+/* ============================================
+   SOLUTION SECTION — CSS
+   Color Palette: Premium White Theme
+   ============================================
+
+   🎨 CSS Variables Reference:
+   --bg-primary       #E6EDF3  Soft Mist Blue    → main background
+   --bg-secondary     #F5F7FA  Cloud White       → section separation
+   --surface          #FFFFFF  Pure White        → cards
+   --soft-surface     #F8FAFC  Frost White       → premium card feel
+   --hero-bg          #E9EEF5  Ice Blue          → hero highlight
+   --text-primary     #1E293B  Midnight Navy     → headings
+   --text-secondary   #64748B  Cool Gray         → paragraphs
+   --text-muted       #94A3B8  Soft Slate        → labels, hints
+   --brand-primary    #00C2CB  Aqua Teal         → brand accent
+   --brand-secondary  #FF4F8B  Vivid Pink        → brand accent 2
+   --btn-primary      #0F172A  Deep Navy         → buttons
+   --btn-hover        #1E293B  Dark Slate        → button hover
+   --border           #E2E8F0  Light Silver      → borders
+   --shadow           rgba(0,0,0,0.08)           → soft shadow
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap');
+
+:root {
+  /* Base */
+  --bg-primary:      #E6EDF3;
+  --bg-secondary:    #F5F7FA;
+  --surface:         #FFFFFF;
+  --soft-surface:    #F8FAFC;
+  --hero-bg:         #E9EEF5;
+
+  /* Text */
+  --text-primary:    #1E293B;
+  --text-secondary:  #64748B;
+  --text-muted:      #94A3B8;
+
+  /* Brand */
+  --brand-primary:   #00C2CB;
+  --brand-secondary: #FF4F8B;
+  --brand-gradient:  linear-gradient(90deg, #00C2CB, #FF4F8B);
+
+  /* Buttons */
+  --btn-primary:     #0F172A;
+  --btn-hover:       #1E293B;
+
+  /* Borders & Shadows */
+  --border:          #E2E8F0;
+  --shadow:          rgba(0, 0, 0, 0.08);
+}
+
+/* ── Section ── */
+.solution-section {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 48px;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Subtle grid overlay */
+.solution-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(30, 41, 59, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 41, 59, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: 0;
+}
+
+/* ── Inner wrapper ── */
+.solution-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Header row ── */
+.solution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 64px;
+  gap: 40px;
+}
+
+/* Mission label */
+.mission-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.mission-label::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  /* border: 1.5px solid var(--brand-primary); */
+  border-radius: 3px;
+  background: transparent;
+}
+
+/* Headline */
+.headline {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.headline-accent {
+  /* Aurora Gradient text */
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* Header right */
+.header-right {
+  max-width: 340px;
+  flex-shrink: 0;
+  padding-top: 8px;
+}
+
+.header-right p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+/* Explore button */
+.explore-btn {
+  display: inline-block;
+  background: var(--btn-primary);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.01em;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.explore-btn:hover {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+/* ── Cards row ── */
+.cards-row {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ── Base card ── */
+.sol-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex: 1;
+  min-width: 0;
+}
+
+.sol-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px var(--shadow);
+}
+
+/* Card number */
+.card-number {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: auto;
+  letter-spacing: -0.03em;
+}
+
+/* Card icon */
+.card-icon {
+  width: 32px;
+  height: 32px;
+  /* background: var(--soft-surface);
+  border: 1px solid var(--border); */
+  /* border-radius: 50%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+/* Card title */
+.card-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* ── Small cards ── */
+.sol-card.small {
+  justify-content: space-between;
+  min-height: 220px;
+  max-width: 180px;
+  flex: 0 0 160px;
+  background: var(--soft-surface);
+}
+
+/* ── Featured card ── */
+.sol-card.featured {
+  flex: 0 0 300px;
+  padding: 0;
+  overflow: hidden;
+  min-height: 360px;
+  background: var(--surface);
+}
+
+/* Featured image area */
+.featured-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 194, 203, 0.25) 0%,
+    rgba(0, 194, 203, 0.15) 30%,
+    rgba(255, 79, 139, 0.15) 70%,
+    rgba(255, 79, 139, 0.25) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.featured-image svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Featured body */
+.featured-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+
+/* .featured-body .card-icon {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+} */
+
+.featured-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.featured-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .solution-header {
+    flex-direction: column;
+  }
+  .header-right {
+    max-width: 100%;
+  }
+  .cards-row {
+    flex-wrap: wrap;
+  }
+  .sol-card.small {
+    flex: 1 1 140px;
+    max-width: none;
+  }
+  .sol-card.featured {
+    flex: 1 1 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .solution-section {
+    padding: 40px 20px;
+  }
+  .cards-row {
+    flex-direction: column;
+  }
+  .sol-card.small {
+    flex-direction: row;
+    align-items: center;
+    min-height: auto;
+    padding: 20px;
+  }
+  .sol-card.small .card-number {
+    font-size: 36px;
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
+}

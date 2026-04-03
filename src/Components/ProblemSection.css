@@ -1,0 +1,394 @@
+/* ============================================================
+   ProblemSection.css  –  Premium Education UI
+   Palette: Soft Mist Blue bg · Midnight Navy text · Teal+Pink accents
+   ============================================================ */
+
+/* ── CSS Variables ── */
+:root {
+  --bg-mist: #EFF4FB;
+  --card-white: #FFFFFF;
+  --frost-white: #F8FAFC;
+  --midnight-navy: #0F172A;
+  --cool-gray: #64748B;
+  --deep-navy: #1E3A5F;
+  --teal: #0EA5E9;
+  --pink: #EC4899;
+  --border-silver: #E2E8F0;
+  --shadow-soft: rgba(0, 0, 0, 0.08);
+  --shadow-card: rgba(0, 0, 0, 0.5);
+  --gradient-teal-pink: linear-gradient(135deg, #0EA5E9, #EC4899);
+}
+
+/* ── Section Wrapper ── */
+.problem-section {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  background: url('../assets/problemsec.png') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* Fallback if image missing: */
+  background-color: var(--bg-mist);
+}
+
+.problem-inner {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* ============================================================
+   LEFT — Animated Image Stage
+   ============================================================ */
+.ps-left {
+  flex: 1;
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ps-image-stage {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+/* ── Individual image cards ── */
+.ps-img-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px var(--shadow-soft);
+  border: 1px solid var(--border-silver);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ps-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SAD card — default visible */
+.ps-img-sad {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  z-index: 2;
+  filter: grayscale(30%);
+}
+
+/* HAPPY card — default hidden */
+.ps-img-happy {
+  opacity: 0;
+  transform: scale(0.94) translateY(12px);
+  z-index: 1;
+}
+
+/* ── Phase: transitioning ── */
+.ps-image-stage.transitioning .ps-img-sad {
+  opacity: 0;
+  transform: scale(1.04) translateY(-12px);
+}
+.ps-image-stage.transitioning .ps-img-happy {
+  opacity: 0;
+  transform: scale(0.96) translateY(12px);
+}
+
+/* ── Phase: happy ── */
+.ps-image-stage.happy .ps-img-sad {
+  opacity: 0;
+  transform: scale(0.94) translateY(-16px);
+  z-index: 1;
+}
+.ps-image-stage.happy .ps-img-happy {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  z-index: 2;
+  filter: none;
+}
+
+/* ── Label chips on images ── */
+.ps-img-label {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+}
+
+.ps-label-before {
+  background: rgba(15, 23, 42, 0.72);
+  color: #fff;
+}
+
+.ps-label-after {
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--midnight-navy);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.ps-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ps-dot-red  { background: #EF4444; }
+.ps-dot-green { background: #22C55E; }
+
+/* ── Burst flash on transition ── */
+.ps-transition-burst {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ps-image-stage.transitioning .ps-transition-burst {
+  animation: burstFlash 0.55s ease-out forwards;
+}
+
+@keyframes burstFlash {
+  0%   { opacity: 0; transform: scale(0.8); }
+  40%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1.1); }
+}
+
+/* ── Floating badge below image ── */
+.ps-badge {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: var(--card-white);
+  border: 1px solid var(--border-silver);
+  box-shadow: 0 4px 20px var(--shadow-soft);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--midnight-navy);
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+.ps-badge-icon {
+  font-size: 1rem;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ============================================================
+   RIGHT — Content Card
+   ============================================================ */
+.ps-right {
+  flex: 1;
+}
+
+.problem-card {
+  background-color: #1E293B;
+  padding: 48px 40px;
+  border-radius: 24px;
+  color: #fff;
+  box-shadow: 0 20px 40px var(--shadow-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top-right glow */
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Tag ── */
+.ps-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: var(--gradient-teal-pink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+/* ── Heading ── */
+.problem-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+
+.ps-gradient-text {
+  background: var(--gradient-teal-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Body copy ── */
+.problem-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #94A3B8;
+  margin-bottom: 28px;
+}
+
+.problem-content strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── List ── */
+.problem-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.problem-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.97rem;
+  color: #CBD5E1;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.problem-list li:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ps-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ── CTA Button ── */
+.ps-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: 12px;
+  background: var(--gradient-teal-pink);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-cta-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.12);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.ps-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(14, 165, 233, 0.45);
+}
+
+.ps-cta-btn:hover::after {
+  opacity: 1;
+}
+
+.ps-btn-arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s;
+}
+
+.ps-cta-btn:hover .ps-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .problem-inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ps-left {
+    width: 100%;
+    min-height: 320px;
+  }
+
+  .ps-image-stage {
+    height: 320px;
+  }
+
+  .problem-heading {
+    font-size: 1.6rem;
+  }
+
+  .problem-card {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .problem-section {
+    padding: 50px 16px;
+  }
+
+  .problem-heading {
+    font-size: 1.35rem;
+  }
+
+  .ps-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
