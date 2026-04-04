@@ -1,125 +1,131 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
+import logo from "../assets/vyoobam logo_rm.png";
 
-const Footer = () => {
+const DiscordIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17">
+    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.015.04.037.05a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
+  </svg>
+);
+
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+);
+
+const GitHubIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17">
+    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+  </svg>
+);
+
+export default function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = () => {
+    if (email.trim()) {
+      alert(`Subscribed with: ${email}`);
+      setEmail("");
+    }
+  };
+
   return (
-    <footer className="footer">
-      {/* Top Wave Divider */}
-      <div className="footer-wave">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-          <path
-            d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"
-            fill="#1a3a5c"
-          />
-        </svg>
-      </div>
+    <footer className="footer-root">
+      <div className="footer-inner">
 
-      <div className="footer-main">
-        <div className="footer-container">
-
-          {/* Brand Column */}
-          <div className="footer-col footer-brand">
-            <div className="footer-logo">
-              <span className="logo-icon">🎓</span>
-              <span className="logo-text">Vyoobam</span>
-            </div>
-            <p className="footer-tagline">
-              Empowering minds through quality education and lifelong learning.
-            </p>
-            <div className="footer-social">
-              <a href="#" className="social-link" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-              </a>
-              <a href="#" className="social-link" aria-label="Twitter/X">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                </svg>
-              </a>
-              <a href="#" className="social-link" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-                </svg>
-              </a>
-              <a href="#" className="social-link" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" />
-                </svg>
-              </a>
-              <a href="#" className="social-link" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect x="2" y="9" width="4" height="12" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-              </a>
-            </div>
+        {/* ── LEFT: Brand Card ── */}
+        <div className="footer-brand">
+          <div className="footer-logo-row">
+            <img src={logo} alt="Vyoobam Logo" className="footer-logo-img" />
+            <span className="footer-brand-name">Vyoobam</span>
           </div>
 
-          {/* Quick Links Column */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Quick Links</h4>
-            <ul className="footer-links">
+          <p className="footer-tagline">
+            Transforming learning into real-world success.
+          </p>
+          <p className="footer-sub-tagline">
+            Build skills. Gain experience. Get hired.
+          </p>
+
+          <div className="footer-social-section">
+            <span className="footer-stay">Stay in touch!</span>
+            <div className="footer-socials">
+              <a href="#" className="social-btn" aria-label="Discord"><DiscordIcon /></a>
+              <a href="#" className="social-btn" aria-label="X"><XIcon /></a>
+              <a href="#" className="social-btn" aria-label="LinkedIn"><LinkedInIcon /></a>
+              <a href="#" className="social-btn" aria-label="GitHub"><GitHubIcon /></a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── MIDDLE: Navigation ── */}
+        <div className="footer-nav">
+          <div className="footer-nav-col">
+            <h4 className="footer-nav-heading">Navigation</h4>
+            <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">Courses</a></li>
+              <li><a href="#">Internships</a></li>
+              <li><a href="#">Demo Class</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div className="footer-nav-col">
+            <h4 className="footer-nav-heading">Company</h4>
+            <ul>
               <li><a href="#">About Us</a></li>
-              <li><a href="#">Admissions</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
             </ul>
           </div>
+        </div>
 
-          {/* Contact Column */}
-          <div className="footer-col">
-            <h4 className="footer-heading">Contact Us</h4>
-            <ul className="footer-contact-list">
-              <li>
-                <span className="contact-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                </span>
-                <a href="tel:9003179142">9003179142</a>
-              </li>
-              <li>
-                <span className="contact-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                </span>
-                <a href="mailto:hr@vyoobam.com">hr@vyoobam.com</a>
-              </li>
-              <li className="contact-address">
-                <span className="contact-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                </span>
-                <span>
-                  Anees Nagar, 815, Mutthupillai Mandapam,<br />
-                  Kumbakonam, Tamil Nadu 612401
-                </span>
-              </li>
-            </ul>
+        {/* ── RIGHT: CTA ── */}
+        <div className="footer-cta">
+          <div className="footer-cta-top">
+            <div className="footer-cta-text">
+              <p className="footer-cta-sub">Learning never stops.</p>
+              <h3 className="footer-cta-title">Stay ahead with Vyoobam.</h3>
+            </div>
+            <div className="footer-floating-box">
+              <img src={logo} alt="Vyoobam" className="floating-logo-img" />
+              <span className="floating-label">✦ Right Place</span>
+            </div>
           </div>
 
+          <div className="footer-email-row">
+            <input
+              type="email"
+              className="footer-email-input"
+              placeholder="Enter email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
+            />
+            <button className="footer-subscribe-btn" onClick={handleSubscribe}>
+              Subscribe
+            </button>
+          </div>
         </div>
+
       </div>
 
-      {/* Bottom Bar */}
-      <div className="footer-bottom">
-        <div className="footer-container footer-bottom-inner">
-          <p className="footer-copy">© 2024 Vyoobam. All rights reserved.</p>
-          <p className="footer-sub">Decentralised Academic Organisation · Tamil Nadu, India</p>
-        </div>
+      {/* ── Bottom Bar ── */}
+      <div className="footer-bottom-bar">
+        <p>© 2026 Vyoobam. All rights reserved.</p>
       </div>
+
+      {/* ── Watermark ── */}
+      <div className="footer-watermark" aria-hidden="true">vyoobam</div>
     </footer>
   );
-};
-
-export default Footer;
+}

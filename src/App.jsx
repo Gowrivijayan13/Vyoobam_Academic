@@ -120,6 +120,8 @@
 
 // export default App
 import CertificationSection from "./Components/CertificationSection.jsx";
+import DemoClasses from "./Components/DemoClasses.jsx";
+import Faq from "./Components/FAQ.jsx";
 import Footer from "./Components/Footer.jsx";
 import Header from "./Components/Header.jsx";
 import Hero from "./Components/Hero.jsx";
@@ -135,7 +137,9 @@ function App() {
       <ProblemSection/>
       <Solution/>
       <CertificationSection/>
-      {/* <Footer/> */}
+      <DemoClasses/>
+      <Faq/>
+      <Footer/>
     
       
     </div>
